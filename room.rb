@@ -28,6 +28,7 @@ class Room
     @songlist.delete(song)
   end
 
-  
+  #add ability to empty songs
+  #do songlist array to take songs from instead of individual song objects
 
 end
