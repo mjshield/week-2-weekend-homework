@@ -11,10 +11,10 @@ class TestRoom < Minitest::Test
   def setup
     @redroom = Room.new("Red Room")
 
-    @guest1 = Guest.new("Sam")
-    @guest2 = Guest.new("Carol")
-    @guest3 = Guest.new("Rein")
-    @guest4 = Guest.new("Jack")
+    @guest1 = Guest.new("Sam", 50)
+    @guest2 = Guest.new("Carol", 800)
+    @guest3 = Guest.new("Rein", 300)
+    @guest4 = Guest.new("Jack", 100)
 
     @sadsong = Song.new("Sad Song")
     @clubsong = Song.new("Club Song")
@@ -62,6 +62,12 @@ class TestRoom < Minitest::Test
     @redroom.add_guest(@guest3)
     @redroom.add_guest(@guest4)
     assert_equal(3, @redroom.occupants.count)
+  end
+
+  def test_guest_charged_fee
+    @redroom.add_guest(@guest1)
+    assert_equal(40, @guest1.money)
+
   end
 
   def test_empty_songlist
