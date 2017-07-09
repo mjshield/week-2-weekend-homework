@@ -9,11 +9,11 @@ class Room
   end
 
   def add_guest(new_guest)
-    if @occupants.count < 3
+    if @occupants.count < 3  && new_guest.money >= 10
       new_guest.money -= 10
       @occupants << new_guest
     else
-      p "The #{@name} is full."
+      p "The #{@name} is full or the guest lacks the required money (10 required, #{new_guest.name} has #{new_guest.money}."
     end
   end
 
