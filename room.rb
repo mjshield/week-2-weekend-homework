@@ -9,7 +9,11 @@ class Room
   end
 
   def add_guest(new_guest)
-    @occupants << new_guest
+    if @occupants.count < 3
+      @occupants << new_guest
+    else
+      p "The #{@name} is full."
+    end
   end
 
   def remove_guest(guest)
@@ -28,7 +32,10 @@ class Room
     @songlist.delete(song)
   end
 
-  #add ability to empty songs
+  def empty_songs
+    @songlist.clear()
+  end
+
   #do songlist array to take songs from instead of individual song objects
 
 end

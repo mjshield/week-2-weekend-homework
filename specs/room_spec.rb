@@ -14,10 +14,12 @@ class TestRoom < Minitest::Test
     @guest1 = Guest.new("Sam")
     @guest2 = Guest.new("Carol")
     @guest3 = Guest.new("Rein")
+    @guest4 = Guest.new("Jack")
 
     @sadsong = Song.new("Sad Song")
     @clubsong = Song.new("Club Song")
     @rocksong = Song.new("Rock Song")
+    @jazzsong = Song.new("Jazz Song")
   end
 
   def test_get_name
@@ -54,6 +56,14 @@ class TestRoom < Minitest::Test
     assert_equal(0, @redroom.occupants.count)
   end
 
+  def test_adding_to_full_room
+    @redroom.add_guest(@guest1)
+    @redroom.add_guest(@guest2)
+    @redroom.add_guest(@guest3)
+    @redroom.add_guest(@guest4)
+    assert_equal(3, @redroom.occupants.count)
+  end
+
   def test_empty_songlist
     assert_equal(0, @redroom.songlist.count)
   end
@@ -74,6 +84,14 @@ class TestRoom < Minitest::Test
     @redroom.add_song(@rocksong)
     @redroom.remove_song(@clubsong)
     assert_equal(1, @redroom.songlist.count)
+  end
+
+  def test_empty_songs
+   @redroom.add_song(@clubsong)
+   @redroom.add_song(@rocksong)
+   @redroom.add_song(@sadsong)
+    @redroom.empty_songs()
+    assert_equal(0, @redroom.songlist.count)
   end
 
 end
