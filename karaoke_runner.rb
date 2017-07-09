@@ -3,11 +3,8 @@ require_relative('./room')
 require_relative('./song')
 
 
-@redroom = Room.new("Red Room")
-
-# guest2 = Guest.new("Carol", 800)
-# guest3 = Guest.new("Rein", 300)
-# guest4 = Guest.new("Jack", 100)
+redroom = Room.new("Red Room")
+blueroom = Room.new("Blue Room")
 
 sadsong = Song.new("Sad Song")
 clubsong = Song.new("Club Song")
